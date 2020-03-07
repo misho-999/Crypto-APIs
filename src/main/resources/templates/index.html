@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:include="~{fragments/head}"/>
+</head>
+
+<body class="container-fluid">
+
+<header>
+    <th:block th:include="~{fragments/navbar}"/>
+</header>
+
+<main class="back-index">
+    <div class="container-fluid text-center">
+        <h1 class="text-primary p-4">CryptoAPIs Candidate Task!</h1>
+        <th:block th:if="${successAddedNewsMessage} != null">
+            <div class="text-success h3"><p th:text="${successAddedNewsMessage}"></div>
+        </th:block>
+    </div>
+
+    <div id="all-news-table" class="row justify-content-center mt-2">
+        <form id="myForm" th:action="@{/home}" method="get">
+            <fieldset class="form-group">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="radioBtn" id="gridRadios1" value="date">
+                            <label class="form-check-label label-color h4 font-italic" for="gridRadios1">Sort By
+                                Date</label>
+                        </div>
+                        <br/>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="radioBtn" id="gridRadios2" value="title">
+                            <label class="form-check-label label-color h4 font-italic" for="gridRadios2">Sort By
+                                Title</label>
+                        </div>
+                        <br/>
+                        <div class="form-check disabled">
+                            <input class="form-check-input" type="radio" name="radioBtn" id="gridRadios3"
+                                   value="date-and-title">
+                            <label class="form-check-label label-color h4 font-italic" for="gridRadios3">Sort By Date
+                                and Title</label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="row">
+        <div class="col col-md-3">
+            <input id="filterByDate" class="form-control mr-sm-2" type="search" placeholder="Filter By Date..."
+                   aria-label="Search" name="filterByDate">
+            <button th:onclick="'filterByDate();'" class="btn btn-outline-success my-2 my-sm-0" type="submit">Filter By
+                Date
+            </button>
+        </div>
+
+        <div class="col col-md-3">
+            <input id="filterByTitle" class="form-control mr-sm-2" type="search" placeholder="Filter By Title..."
+                   aria-label="Search" name="filterByTitle">
+            <button th:onclick="'filterByTitle();'" class="btn btn-outline-success my-2 my-sm-0" type="submit">Filter By
+                Title
+            </button>
+        </div>
+
+        <div class="col col-md-3">
+            <button th:onclick="'filterByDateAndTitle();'" class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                Filter By Date And Title
+            </button>
+        </div>
+    </div>
+
+
+    <div class="all-news">
+
+    </div>
+
+</main>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/allNews.js"></script>
+</body>
+</html>

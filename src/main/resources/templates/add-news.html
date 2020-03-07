@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+
+<body class="container-fluid">
+<header>
+    <th:block th:include="~{fragments/navbar}"></th:block>
+</header>
+
+<main>
+    <div class="container-fluid text-center">
+        <h1 class="text-primary p-4">Add News</h1>
+        <div class="container-fluid">
+            <div class="row justify-content-md-center text-center">
+                <form class="form w-25 mx-auto" th:action="@{/api/add-news}" th:method="post" th:object="${model}">
+                    <div class="form-row">
+                        <div class="form-group col-md ">
+                            <label for="news-date"><em><strong class="label-color">Date</strong></em></label>
+                            <input type="date" class="form-control" id="news-date" placeholder="Date..." name="date"
+                                   th:value="*{date}">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md ">
+                            <label for="title"><em><strong class="label-color">Title</strong></em></label>
+                            <input type="text" class="form-control" id="title" placeholder="Title..." name="title"
+                                   th:value="*{title}">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md ">
+                            <label for="shortDescription"> <em> <strong class="label-color ">Short Description</strong></em></label>
+                            <input type="text" class="form-control" id="shortDescription"
+                                   placeholder="Short Description..." name="shortDescription"
+                                   th:value="*{shortDescription}">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md ">
+                            <label for="text"><em><strong class="label-color">Text</strong></em></label>
+                            <input type="text" class="form-control" id="text" placeholder="Text..." name="text"
+                                   th:value="*{text}">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+
+</html>
